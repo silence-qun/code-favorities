@@ -1,9 +1,9 @@
 # 目录
-  * 轮播图（带分页器）[#轮播图（带分页器）]
-  * 轮播图（带前进后退按钮）
+&emsp;&emsp;&emsp;&emsp;* 轮播图（带分页器）[#轮播图（带分页器）]
+&emsp;&emsp;&emsp;&emsp;* 轮播图（带前进后退按钮）
 # 轮播图（带分页器）
-      ## html
-       ```html   
+&emsp;&emsp;&emsp;&emsp;## html
+&emsp;&emsp;&emsp;&emsp;```html   
 	<link rel="stylesheet" href="images/swiper.min.css">
 	<div class="swiper-container my-swiper">
 	       <ul class="swiper-wrapper">
@@ -15,7 +15,7 @@
 	</div>
        <script src="images/swiper.min.js"></script>
        ```
-   ## css
+&emsp;&emsp;&emsp;&emsp;## css
        ```css
        .my-swiper {
               width: 300px;
@@ -62,7 +62,8 @@
        .my-pagination .swiper-pagination-bullet-active {
               background: #fa8d00;
        }
-  ## javascript
+       ```
+&emsp;&emsp;&emsp;&emsp;## javascript
         ```javascript
         $(document).ready(function() {
               var mySwiper = new Swiper("my-swiper", {
