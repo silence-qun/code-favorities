@@ -66,7 +66,7 @@
 ## javascript
 ```javascript
     $(document).ready(function() {
-        var mySwiper = new Swiper("my-swiper", {
+        var mySwiper = new Swiper(".my-swiper", {
             autoplay: { // 是否自动切换
                 disableOnInteraction: false, // 操作swiper后自动切换不会停止，每次都会重新启动swiper，操作包括触碰、拖动、点击pagination等。
             },
@@ -78,10 +78,11 @@
 				el: ".my-pagination",
 				clickable: true,
 				renderBullet: function (index, className) {
-				       return "<span class='" + className + "'>" + (index + 1) + "</span>"
-            },
-        )};
-   )};
+					return "<span class='" + className + "'>" + (index + 1) + "</span>";
+				},
+			},
+        });
+   });
 ```
 # 轮播图（带前进后退按钮）
 ## html
