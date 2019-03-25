@@ -1,9 +1,9 @@
 # 目录
-&emsp;&emsp;&emsp;&emsp;* 轮播图（带分页器）[#轮播图（带分页器）]
-&emsp;&emsp;&emsp;&emsp;* 轮播图（带前进后退按钮）
+   * 轮播图（带分页器）[#轮播图（带分页器）]
+   * 轮播图（带前进后退按钮）
 # 轮播图（带分页器）
-&emsp;&emsp;&emsp;&emsp;## html
-&emsp;&emsp;&emsp;&emsp;```html   
+## html
+```html   
 	<link rel="stylesheet" href="images/swiper.min.css">
 	<div class="swiper-container my-swiper">
 	       <ul class="swiper-wrapper">
@@ -14,9 +14,9 @@
 		<div class="swiper-pagination my-pagination"></div>
 	</div>
        <script src="images/swiper.min.js"></script>
-       ```
-&emsp;&emsp;&emsp;&emsp;## css
-       ```css
+```
+## css
+```css
        .my-swiper {
               width: 300px;
               height: 400px;
@@ -44,7 +44,7 @@
               color: #fff;
               font-size: 13px;
               padding-left: 20px;
-              background: #000;
+              background: #000; 
               opacity: 0.5;
        }
        .my-paginetion {
@@ -62,9 +62,9 @@
        .my-pagination .swiper-pagination-bullet-active {
               background: #fa8d00;
        }
-       ```
-&emsp;&emsp;&emsp;&emsp;## javascript
-        ```javascript
+```
+## javascript
+```javascript
         $(document).ready(function() {
               var mySwiper = new Swiper("my-swiper", {
                      autoplay: { // 是否自动切换
@@ -81,6 +81,7 @@
                      },
               )};
        )};
+```
               
        
       
