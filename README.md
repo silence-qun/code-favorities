@@ -3,10 +3,7 @@
 	* [轮播图（带分页器）](#轮播图带分页器)
 	* [轮播图（带前进后退按钮）](#轮播图带前进后退按钮)
 * 模板设参
-	* [大标题](#大标题)
-	* [图片新闻](#图片新闻)
-	* [栏目（带链接）](#栏目带链接)
-	* [新闻列表](新闻列表)
+	* [首页基本设参](#首页基本设参)
 # 轮播图（带分页器）
 ## html
 ```html   
@@ -193,29 +190,23 @@
 		});
 	});
 ```
-# 大标题
-## html
+# 首页基本设参
 ```html
+	<!-- 大标题 -->
 	<!--subfor-->
 	<h1 class="s1-title"><a href='<!--articleurl-->' title='<!--articletitle-->' target='_blank'><!--articletitleshort--></a></h1>
 	<p class="s1-p">[<!--articlebrief-->]</p>
 	<!--/subfor-->
-```
-# 图片新闻
-## html
-```html
+
+	<!-- 图片新闻 -->
 	<!--subfor-->
 	<li class="swiper-slide"><a href="<!--articleurl-->"><img src="<!--articleimage-->"  alt=""><span><!--articletitleshort--></span></a></li>
 	<!--/subfor-->
-```
-# 栏目（带链接）
-## html
-```html
+
+	<!-- 栏目（带链接） -->
 	<!--for--><a href="<!--columnurl-->"><!--columnname--></a><!--/for-->
-```
-# 新闻列表
-## html
-```html
+
+	<!-- 新闻列表 -->
 	<!--subfor-->
 	<li><a href="<!--articleurl-->" title='<!--articletitle-->' target='_blank'><!--articletitleshort--></a><span><!--month2-->-<!--day2--></span></li>
 	<!--/subfor-->
