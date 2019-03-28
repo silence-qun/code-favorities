@@ -4,6 +4,7 @@
 	* [轮播图（带前进后退按钮）](#轮播图带前进后退按钮)
 * 模板设参
 	* [首页基本设参](#首页基本设参)
+	* [文章页设参](#文章页设参)
 # 轮播图（带分页器）
 ## html
 ```html   
@@ -209,6 +210,39 @@
 	<!-- 新闻列表 -->
 	<!--subfor-->
 	<li><a href="<!--articleurl-->" title='<!--articletitle-->' target='_blank'><!--articletitleshort--></a><span><!--month2-->-<!--day2--></span></li>
+	<!--/subfor-->
+```
+# 文章页设参
+```html
+	<script language="javascript">function doZoom(size){document.getElementById('zoom').style.fontSize=size+'px';}</script>
+	<!--subfor-->
+	<h2 class="s2-title"><!--articlehtmltitle--></h2>
+	<p class="s2-date"><span>发布日期：<!--year4-->-<!--month2-->-<!--day2--></span><span class="ml20">浏览次数：<!--articlehits-->次</span><span class="ml20">字体：【<a href='javascript:doZoom(16)'>大</a> <a href='javascript:doZoom(14)'>中</a> <a href='javascript:doZoom(12)'>小</a>】</span></p>
+	<div class="s2-p" id="zoom"><!--articlecontent--></div>
+	<!--if--><!--articleauthor--><p class="s2-edit">（编辑：<!--articleauthor-->）</p><!--/if-->
+	<!--if--><!--articlesource--><p class="s2-edit">信息来源：<!--articlesource--></p><!--/if-->
+	<div class="cf s2-share">分享到：
+		<div class="bshare-custom icon-medium" style="display: inline-block;">
+			<a class=bshare-qzone title=分享到QQ空间></a>
+			<a class=bshare-sinaminiblog title=分享到新浪微博></a>
+			<a class=bshare-renren title=分享到人人网></a>
+			<a class=bshare-qqmb title=分享到腾讯微博></a>
+			<a class=bshare-neteasemb title=分享到网易微博></a>
+			<a class="bshare-more bshare-more-icon more-style-addthis" title=更多平台></a>
+			<span class="BSHARE_COUNT bshare-share-count">0</span>
+		</div>
+		<script charset=utf-8 src="http://static.bshare.cn/b/buttonLite.js#style=-1&uuid=&pophcol=2&lang=zh"></script>
+		<script charset=utf-8 src="http://static.bshare.cn/b/bshareC0.js"></script>
+		<div class="fr s2-print">
+			<a href="javascript:window.print()">【打印本页】</a>
+			<a href="javascript:window.opener=null;window.open('','_self');window.close();">【关闭本页】</a>
+		</div>
+	</div>
+	<!--if--><!--articleattach-->
+	<p class="s2-download"><span class="down">[全文下载]</span><a href='<!--articleattach-->'>附件下载</a></p>
+	<!--/if-->
+	<p class="s2-prev"><!--articlepreviouslink--></p>
+	<p class="s2-prev"><!--articlenextlink--></p>
 	<!--/subfor-->
 ```
 
