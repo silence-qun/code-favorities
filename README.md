@@ -5,7 +5,7 @@
 ## html
 ```html   
 	<link rel="stylesheet" href="images/swiper.min.css">
-    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 	<div class="swiper-container my-swiper">
 		<ul class="swiper-wrapper">
 			<li class="swiper-slide swiper-item"><a href="#"><img src="images/shouye_pic_1.png" alt=""><span>第一张图的简要</span></a></li>
@@ -71,37 +71,37 @@
 		opacity: 1;
 	}
 	.my-pagination .swiper-pagination-bullet-active {
-	      background: #fa8d00;
+			background: #fa8d00;
 	}
 ```
 ## javascript
 ```javascript
-    $(document).ready(function() {
-        var mySwiper = new Swiper(".my-swiper", {
-            autoplay: { // 是否自动切换
-                disableOnInteraction: false, // 操作swiper后自动切换不会停止，每次都会重新启动swiper，操作包括触碰、拖动、点击pagination等。
-            },
-            speed: 300, // 切换速度
-            loop: true, // 循环切换
-             
-            // 分页器
-            pagination: {
+	$(document).ready(function() {
+		var mySwiper = new Swiper(".my-swiper", {
+			autoplay: { // 是否自动切换
+				disableOnInteraction: false, // 操作swiper后自动切换不会停止，每次都会重新启动swiper，操作包括触碰、拖动、点击pagination等。
+			},
+			speed: 300, // 切换速度
+			loop: true, // 循环切换
+				
+			// 分页器
+			pagination: {
 				el: ".my-pagination",
 				clickable: true,
 				renderBullet: function (index, className) {
 					return "<span class='" + className + "'>" + (index + 1) + "</span>";
 				},
 			},
-        });
-        // 鼠标移上停止切换
-        mySwiper.el.onmouseover = function () {
-            mySwiper.autoplay.stop();
-        }
-        // 鼠标移开开始切换
-        mySwiper.el.onmouseleave = function () {
-            mySwiper.autoplay.start();
-        }
-   });
+		});
+		// 鼠标移上停止切换
+		mySwiper.el.onmouseover = function () {
+			mySwiper.autoplay.stop();
+		}
+		// 鼠标移开开始切换
+		mySwiper.el.onmouseleave = function () {
+			mySwiper.autoplay.start();
+		}
+	});
 ```
 # 轮播图（带前进后退按钮）
 ## html
