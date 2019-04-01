@@ -2,6 +2,7 @@
 * js效果
 	* [轮播图（带分页器）](#轮播图带分页器)
 	* [轮播图（带前进后退按钮）](#轮播图带前进后退按钮)
+	* [栏目切换](栏目切换)
 * 模板设参
 	* [首页基本设参](#首页基本设参)
 	* [文章页设参](#文章页设参)
@@ -107,6 +108,8 @@
 		}
 	});
 ```
+效果：  
+![轮播图带分页](/images/effectDiagram_1.png)
 # 轮播图（带前进后退按钮）
 ## html
 ```html
@@ -190,6 +193,130 @@
 			},
 		});
 	});
+```
+效果：  
+![轮播图带前进后退按钮](images/effectDiagram_0.png)
+# 栏目切换
+## html
+```html
+	<div class="news-container">
+		<ul class="cf list-head">
+			<li class="fl news-item item-active"><a href="#">政务要闻</a></li>
+			<li class="fl news-item"><a href="#">各镇动态</a></li>
+			<li class="fl news-item"><a href="#">部门信息</a></li>
+			<li class="fl news-item"><a href="#">媒体聚焦</a></li>
+			<li class="fl news-item"><a href="#">视频新闻</a></li>
+		</ul>
+		<ul class="news-list">
+			<li><a href="#">我县召开扶贫对象动态调整和建档立卡信息采集工.. </a><span>11-16</span></li>
+		</ul>
+		<ul class="hide news-list">
+			<li><a href="#">我县召开扶贫对象动态调整和建档立卡信息采集工1.. </a><span>11-16</span></li>
+		</ul>
+		<ul class="hide news-list">
+			<li><a href="#">我县召开扶贫对象动态调整和建档立卡信息采集工2.. </a><span>11-16</span></li>
+		</ul>
+		<ul class="hide news-list">
+			<li><a href="#">我县召开扶贫对象动态调整和建档立卡信息采集工3.. </a><span>11-16</span></li>
+		</ul>
+		<ul class="hide news-list">
+			<li><a href="#">我县召开扶贫对象动态调整和建档立卡信息采集工4.. </a><span>11-16</span></li>
+		</ul>
+	</div>
+```
+## css
+```css
+	.cf:after {
+		display: block;
+		content: "";
+		height: 0;
+		visibility: hidden;
+		clear: both;
+	}
+	.cf {
+		zoom: 1;
+	}
+	.fl {
+		float: left;
+	}
+	.hide {
+		display: none;
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+	}
+	a {
+		text-decoration: none; 
+	}
+	.news-container {
+		width: 500px;
+		height: 340px;
+		overflow: hidden;
+		border: 1px solid #ccc;
+		margin: 20px auto;
+	}
+	.list-head {
+		box-sizing: border-box;
+		border-bottom: 1px solid #ccc;
+		list-style: none;
+		height: 35px;
+	}
+	.news-item {
+		box-sizing: border-box;
+		padding: 0 10px;
+		height: 35px;
+		line-height: 35px;
+		font-size: 17px;
+		color: #333;
+		width: 20%;
+		text-align: center;
+	}
+	.item-active {
+		border-bottom: 1px solid #125aae;
+		color: #1a5fb0;
+	}
+	.news-item a {
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		color: inherit;
+	}
+	.news-list li {
+		height: 43px;
+		line-height:43px;
+		border-bottom: 1px solid #bfbfbf;
+		padding-left: 30px;
+		background: url(shouye_icon_2.png) no-repeat 14px 20px;
+		font-size: 15px;
+		color: #333;
+		list-style: none;
+	}
+	.news-list li a {
+		color: inherit;
+	}
+	.news-list li span {
+		float: right;
+		font-size: 13px;
+		color: #999;
+	}
+```
+```javascript
+	$(document).ready(function() {
+		switchNav(".news-item", "item-active", "news-list");
+	});
+	/**
+	* @param item // 鼠标滑过的项
+	* @param active // 当前的项
+	* @param list // 要显示的项
+	*/
+	function switchNav(item, active, list) {
+		$(item).mouseover(function() {
+			$(this).addClass(active).siblings(item).removeClass(active);
+			var index = $(this).index(item);
+			$(list).eq(index).removeClass("hide").siblings(list).addClass("hide");
+		});
+	}
 ```
 # 首页基本设参
 ```html
