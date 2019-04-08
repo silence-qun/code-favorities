@@ -4,6 +4,8 @@
 	* [轮播图（带前进后退按钮）](#轮播图带前进后退按钮)
 	* [栏目切换](#栏目切换)
 	* [滚屏](#滚屏)
+	* [文字向上滚动](#文字向上滚动)
+	* 
 * 模板设参
 	* [首页基本设参](#首页基本设参)
 	* [文章页设参](#文章页设参)
@@ -302,6 +304,7 @@
 		color: #999;
 	}
 ```
+## javascript
 ```javascript
 	$(document).ready(function() {
 		switchNav(".news-item", "item-active", "news-list");
@@ -328,6 +331,7 @@
 	<div class="page_2"></div>
 	<div class="page_3"></div>
 ```
+## css
 ```css
 	html, body { height: 100%; }
 	body { margin: 0; }
@@ -337,6 +341,7 @@
 	.page_2 { background: #eef; }
 	.page_3 { background: red; }
 ```
+## javascript
 ```javascript
 	document.addEventListener("DOMContentLoaded", function() {
 		var body = document.body;
@@ -382,6 +387,70 @@
 			else body.scrollTop = html.scrollTop = v;
 		}
 	});
+```
+# 文字向上滚动
+## html
+```html
+	<div id="scrollBox">
+		<ul id="con1">
+            <li>我是测试内容0！！<li>
+            <li>我是测试内容1！！<li>
+            <li>我是测试内容2！！<li>
+            <li>我是测试内容3！！<li>
+            <li>我是测试内容4！！<li>
+            <li>我是测试内容5！！<li>
+            <li>我是测试内容6！！<li>
+            <li>我是测试内容7！！<li>
+            <li>我是测试内容8！！<li>
+            <li>我是测试内容9！！<li>
+		</ul>
+		<ul id="con2"></ul>
+	</div>
+```
+## css
+```css
+	* { 
+		margin: 0; 
+		padding: 0; 
+	}
+	ul, li { list-style: none; }
+	#scrollBox { 
+		height: 150px;
+		width: 300px;
+		margin: 100px auto;
+		background: #f09; 
+		overflow: hidden;
+	}
+	#con1, #con2 { 
+		width: 280px; 
+		float: left;
+	}
+	#scrollBox li {
+		height: 15px;
+		line-height: 15px;
+		text-align: center;
+	}
+```
+## javascript
+```javascript
+	var area = document.getElementById("scrollBox");
+	var con1 = document.getElementById("con1");
+	var con2 = document.getElementById("con2");
+	con2.innerHTML = con1.innerHTML;
+	function scrollUp() {
+		if (area.scrollTop >= con1.offsetHeight) {
+			area.scrollTop = 0;
+		} else {
+			area.scrollTop++;
+		}
+	}
+	var myTimer = setInterval(scrollTop, 50);
+	area.onmouseover = function() {
+		clearInterval(myTimer);
+	}
+	area.onmouseout = function() {
+		myTimer = setInterval(scrollTop, 50);
+	}
 ```
 # 首页基本设参
 ```html
