@@ -5,7 +5,7 @@
 	* [栏目切换](#栏目切换)
 	* [滚屏](#滚屏)
 	* [文字向上滚动](#文字向上滚动)
-	* 
+	* [瀑布流](#瀑布流)
 * 模板设参
 	* [首页基本设参](#首页基本设参)
 	* [文章页设参](#文章页设参)
@@ -450,6 +450,115 @@
 	}
 	area.onmouseout = function() {
 		myTimer = setInterval(scrollTop, 50);
+	}
+```
+# 瀑布流
+## html
+```html
+	<div id="container">
+		<div class="img-item">
+			<div class="img"><img src="images/0.png" alt="" /></div>
+		</div>
+		...
+	</div>
+```
+## css
+```css
+	body { background: #efefef; }
+	img {
+		width: 175px; 
+		height: auto;
+	}
+	#container { 
+		position: relative;
+		margin: 0 auto;
+	}
+	.img-item {
+		box-sizing: border-box;
+		padding: 10px 0 0 10px;
+		float: left;
+	}
+	.img {
+		box-sizing: border-box;
+		padding: 10px;
+		border: 1px solid #e7e4e4;
+		background: #fff;
+		border-radius: 4px;
+		box-shadow: 0 0 2px #838181;
+	}
+```
+## javascript
+```javascript
+	window.onload = function() {
+		waterfall("container", "img-item");
+	}
+	window.onresize = function() {
+		waterfall("container", "img-item");
+	}
+	window.onscroll = function() {
+		// 页面总高度
+		var bodyH = document.documentElement.scrollHeight;
+		var scrollH = document.documentElement.scrollTop;
+		var screenH = document.documentElement.clientHeight;
+		// 随机生成一张图片
+		if (bodyH <= scrollH + screenH) {
+			var container = document.getElementById("container")
+			var containerW = container.clientWidth;
+			var itemW = document.getElementsByClassName("img-item")[0].offsetWidth;
+			var cols = Math.floor(containerW / itemW);
+			for (var i = 0; i <= cols; i++) {
+				var num = Math.floor(Math.random() * 19);
+				var imgItem = document.createElement("div");
+				imgItem.className = "img-item";
+				imgItem.innerHTML = "<div class='img'><img src='images/" + num + ".png' alt='' /></div>";
+				container.appendChild(imgItem);
+			}
+			waterfall("container", "img-item");
+		}
+	}
+	/**
+	* 瀑布流
+	* @param container // 瀑布流容器
+	* @param imgItem // 图片容器
+	*/
+	function waterfall(container, imgItem) {
+		// 获得整个容器元素及其宽度
+		var container = document.getElementById(container);
+		var containerW = container.clientWidth;
+		// 获得每个图片容器及其宽度
+		// clientWidth不包括border和margin，offsetWisth包括border和margin
+		var items = container.getElementsByClassName(imgItem);
+		var itemW = items[0].offsetWidth;
+		// 一行的列数
+		var cols = Math.floor(containerW / itemW);
+		// 设置整个容器的宽度
+		container.style.width = cols * itemW + "px";
+		// 第一列高度的集合
+		var firstColHs = [];
+		for (var i = 0; i < items.length; i++) {
+			if (i < cols) {
+				firstColHs.push(items[i].offsetHeight);
+			} else {
+				var minH = Math.min.apply(null, firstColHs);
+				var minIndex = getMinIndex(firstColHs, minH);
+				items[i].style.position = "absolute";
+				items[i].style.top = minH + "px";
+				items[i].style.left = itemW * minIndex + "px";
+				firstColHs[minIndex] += items[i].offsetHeight;
+			}
+		}
+	}
+	/** 
+		* 获得第一排最小高度的索引
+		* @param arr 
+		* @param num
+		*/ 
+	function getMinIndex(arr, num) {
+		for (var i in arr) {
+			if (arr[i] == num) {
+				return i;
+			}
+		}
 	}
 ```
 # 首页基本设参
