@@ -629,7 +629,7 @@
 		if (toRight) {
 			suspenL++;
 		} else {
-			suspen--;
+			suspenL--;
 		}
 		if (suspenL > clientW - suspenW) {
 			suspenL = clientW - suspenW;
