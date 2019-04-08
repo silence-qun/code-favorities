@@ -393,16 +393,16 @@
 ```html
 	<div id="scrollBox">
 		<ul id="con1">
-            <li>我是测试内容0！！<li>
-            <li>我是测试内容1！！<li>
-            <li>我是测试内容2！！<li>
-            <li>我是测试内容3！！<li>
-            <li>我是测试内容4！！<li>
-            <li>我是测试内容5！！<li>
-            <li>我是测试内容6！！<li>
-            <li>我是测试内容7！！<li>
-            <li>我是测试内容8！！<li>
-            <li>我是测试内容9！！<li>
+			<li>我是测试内容0！！<li>
+			<li>我是测试内容1！！<li>
+			<li>我是测试内容2！！<li>
+			<li>我是测试内容3！！<li>
+			<li>我是测试内容4！！<li>
+			<li>我是测试内容5！！<li>
+			<li>我是测试内容6！！<li>
+			<li>我是测试内容7！！<li>
+			<li>我是测试内容8！！<li>
+			<li>我是测试内容9！！<li>
 		</ul>
 		<ul id="con2"></ul>
 	</div>
@@ -444,12 +444,12 @@
 			area.scrollTop++;
 		}
 	}
-	var myTimer = setInterval(scrollTop, 50);
+	var myTimer = setInterval(scrollUp, 50);
 	area.onmouseover = function() {
 		clearInterval(myTimer);
 	}
 	area.onmouseout = function() {
-		myTimer = setInterval(scrollTop, 50);
+		myTimer = setInterval(scrollUp, 50);
 	}
 ```
 # 瀑布流
