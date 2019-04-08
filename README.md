@@ -626,6 +626,11 @@
 			suspenT = 0;
 			toBottom = true;
 		}
+		if (toRight) {
+			suspenL++;
+		} else {
+			suspen--;
+		}
 		if (suspenL > clientW - suspenW) {
 			suspenL = clientW - suspenW;
 			toRight = false;
