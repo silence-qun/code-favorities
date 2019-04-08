@@ -2,7 +2,8 @@
 * js效果
 	* [轮播图（带分页器）](#轮播图带分页器)
 	* [轮播图（带前进后退按钮）](#轮播图带前进后退按钮)
-	* [栏目切换](栏目切换)
+	* [栏目切换](#栏目切换)
+	* [滚屏](#滚屏)
 * 模板设参
 	* [首页基本设参](#首页基本设参)
 	* [文章页设参](#文章页设参)
@@ -306,6 +307,7 @@
 		switchNav(".news-item", "item-active", "news-list");
 	});
 	/**
+	* 栏目导航切换
 	* @param item // 鼠标滑过的项
 	* @param active // 当前的项
 	* @param list // 要显示的项
@@ -317,6 +319,69 @@
 			$(list).eq(index).removeClass("hide").siblings(list).addClass("hide");
 		});
 	}
+```
+# 滚屏
+## html
+```html
+	<div class="page_0"></div>
+	<div class="page_1"></div>
+	<div class="page_2"></div>
+	<div class="page_3"></div>
+```
+```css
+	html, body { height: 100%; }
+	body { margin: 0; }
+	div { height: 100%; }
+	.page_0 { background: #fee; }
+	.page_1 { background: #efe; }
+	.page_2 { background: #eef; }
+	.page_3 { background: red; }
+```
+```javascript
+	document.addEventListener("DOMContentLoaded", function() {
+		var body = document.body;
+		var html = document.documentElement;
+		var itv;
+		var height = document.body.offsetHeight;
+		var page = scrollTop() / height | 0;
+		// 窗口大小改变事件
+		addEventListener("resize", onresize, false);
+		onresize();
+		// 滚轮事件
+		document.body.addEventListener("onwheel" in document ? "wheel" : "mousewheel", function(e) {
+			// console.log(e);
+			clearTimeout(itv);
+			itv = setTimeout(function() {
+				var delta = e.wheelDelta / 120 || -e.deltaY / 3;
+				page -= delta;
+				var max = (document.body.scrollHeight / height | 0) - 1;
+				if (page < 0) return page = 0;
+				if (page > max) return page = max; 
+				move();
+			}, 100);
+			e.preventDefault();
+		});
+		// 平滑滚动
+		function move() {
+			var value = height * page;
+			var diff = scrollTop() - value;
+			(function callee() {
+				diff = diff / 1.2 | 0;
+				scrollTop(value + diff);
+				if (diff) itv = setTimeout(callee, 16);
+			})();
+		}
+		// resize事件
+		function onresize() {
+			height = body.offsetHeight;
+			move();
+		};
+		// 获取或设置scrollTop
+		function scrollTop(v) {
+			if (v == null) return Math.max(body.scrollTop, html.scrollTop);
+			else body.scrollTop = html.scrollTop = v;
+		}
+	});
 ```
 # 首页基本设参
 ```html
