@@ -6,6 +6,7 @@
 	* [滚屏](#滚屏)
 	* [文字向上滚动](#文字向上滚动)
 	* [瀑布流](#瀑布流)
+	* [移动的悬浮窗](#移动的悬浮窗)
 * 模板设参
 	* [首页基本设参](#首页基本设参)
 	* [文章页设参](#文章页设参)
@@ -560,6 +561,94 @@
 			}
 		}
 	}
+```
+# 移动的悬浮窗
+## html
+```html
+	<div id="suspen">
+		<div class="suspen-text">这是一个随时移动的悬浮窗</div>
+		<div class="suspen-close">关闭</div>
+	</div>
+```
+## css
+```css
+	* { 
+		margin: 0;
+		padding: 0;
+	}
+	#suspen {
+		position: fixed;
+		top: 50%;
+		left: 20%;
+		width: 280px;
+		height: 100px;
+		cursor: pointer;
+	}
+	.suspen-text {
+		font-size: 16px;
+		color: #fff;
+		text-align: center;
+		background: #4c67a7;
+		width: 100%;
+		height: 100%;
+		border-radius: 4px;
+	}
+	.suspen-close {
+		font-size: 14px;
+		color: #000;
+		position: absolute;
+		top: -23px;
+		right: 0;
+		cursor: pointer;
+	}
+```
+## javascript
+```javascript
+	var toBottom = true;
+	var toRight = true;
+	function move() {
+		var clientH = $(window).height();
+		var clientW = $(window).width();
+		var suspenH = $("#suspen").height();
+		var suspenW = $("#suspen").width();
+		var suspenT = $("#suspen").offset().top;
+		var suspenL = $("#suspen").offset().left;
+		if (toBottom) {
+			suspenT++;
+		} else {
+			suspenT--;
+		}
+		if (suspenT > clientH - suspenH) {
+			suspenT = clientH - suspenH;
+			toBottom = false;
+		}
+		if ( suspenT < 0) {
+			suspenT = 0;
+			toBottom = true;
+		}
+		if (suspenL > clientW - suspenW) {
+			suspenL = clientW - suspenW;
+			toRight = false;
+		}
+		if (suspenL < 0) {
+			suspenL = 0;
+			toRight = true;
+		}
+		$("#suspen").css({
+			"top": suspenT + "px",
+			"left": suspenL + "px"
+		})
+	}
+	var moveInter = setInterval(move, 16);
+	$("#suspen").mouseover(function() {
+		clearInterval(moveInter);
+	})
+	$("#suspen").mouseout(function() {
+		moveInter = setInterval(move, 16);
+	})
+	$(".suspen-close").click(function(){
+		$("#suspen").unbind().hide();
+	})
 ```
 # 首页基本设参
 ```html
