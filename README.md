@@ -7,7 +7,7 @@
 	* [文字向上滚动](#文字向上滚动)
 	* [瀑布流](#瀑布流)
 	* [移动的悬浮窗](#移动的悬浮窗)
-	* [js/jQuery获取网页或元素的位置](#js/jQuery获取网页或元素的位置)
+	* [js|jQuery获取网页或元素的位置](#js|jQuery获取网页或元素的位置)
 * 模板设参
 	* [首页基本设参](#首页基本设参)
 	* [文章页设参](#文章页设参)
@@ -656,7 +656,7 @@
 		$("#suspen").unbind().hide();
 	})
 ```
-# js/jQuery获取网页或元素的位置
+# js|jQuery获取网页或元素的位置
 ```html
 // JavaScript获取
 1、 document.body.clientWidth ==> body对象的宽度
@@ -701,7 +701,7 @@
 9、 event.clientY：相对于文档的垂直坐标
 10、 event.offsetX：相对于容器的水平坐标
 11、 event.offsetY：相对于文档的垂直坐标
-12、 document.documentElement.scrollTop：
+12、 document.documentElement.scrollTop：垂直方向滚动的值
 ```
 # 首页基本设参
 ```html
