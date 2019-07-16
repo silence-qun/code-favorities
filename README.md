@@ -7,6 +7,7 @@
 	* [文字向上滚动](#文字向上滚动)
 	* [瀑布流](#瀑布流)
 	* [移动的悬浮窗](#移动的悬浮窗)
+	* [js/jQuery获取网页或元素的位置](#js/jQuery获取网页或元素的位置)
 * 模板设参
 	* [首页基本设参](#首页基本设参)
 	* [文章页设参](#文章页设参)
@@ -654,6 +655,53 @@
 	$(".suspen-close").click(function(){
 		$("#suspen").unbind().hide();
 	})
+```
+# js/jQuery获取网页或元素的位置
+```html
+// JavaScript获取
+1、 document.body.clientWidth ==> body对象的宽度
+2、 document.body.clientHeight ==> body对象的高度
+3、 document.documentElement.clientWidth ==> 可见区宽度
+4、 document.documentElement.clientHeight ==> 可见区高度
+ 
+5、 document.body.clientWidth ==> 网页可见区宽度
+6、 document.body.clientHeight ==> 网页可见区高度
+7、 document.body.offsetWidth ==> 网页可见区宽（包括边线的宽）
+8、 document.body.offsetHeight ==> 网页可见区高（包括边线的高）
+9、 document.body.scrollWidth ==> 网页正文全文宽
+10、 document.body.scrollheight ==> 网页正文全文高
+11、 document.body.scrollTop ==> 网页被卷去的高
+12、 document.body.scrollLeft ==> 网页被卷去的左
+13、 window.screenTop ==> 网页正文部分上
+14、 window.screenLeft ==> 网页正文部分左
+15、 window.screen.height ==> 屏幕分辨率的高
+16、 window.screen.width ==> 屏幕分辨率的宽
+17、 window.screen.availHeight ==> 屏幕可用工作区高度
+18、 window.screen.availWidth ==> 屏幕可用工作区宽度
+
+// jQuery获取
+1、 $(window).height() ==> 浏览器窗口可视区高度
+2、 $(window).width() ==> 浏览器窗口可视区宽度
+3、 $(document).height() ==> 浏览器窗口文档高度
+4、 $(document).width() ==> 浏览器窗口文档宽度
+5、 $(document.body).height() ==> 浏览器窗口文档body高度
+6、 $(document.body).width() ==> 浏览器窗口文档body宽度
+7、 $(document.body).outerHeight(true) ==> 浏览器窗口文档body总高度，包括border padding margin
+8、 $(document.body).outerWidth(true) ==> 浏览器窗口文档body总宽度，包括border padding margin
+
+// HTML精确定位：scrollLeft，scrollWidth，clientWidth，offsetWidth
+1、 scrollHeight：获取对象的滚动高度
+2、 scrollWidth：获取对象的滚动宽度
+3、 scrollLeft：设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离
+4、 scrollTop：设置或获取位于对象上边界和窗口中可见内容最顶端之间的距离
+5、 offsetHeight：获取对象相对于版面或由offsetParent属性指定的父坐标的高度
+6、 offsetLeft：获取对象相对于版面或由offsetParent属性指定的父坐标的左侧位置
+7、 offsetTop：获取对象相对于版面或由offsetParent属性指定的父坐标的顶端位置
+8、 event.clientX：相对于文档的水平坐标
+9、 event.clientY：相对于文档的垂直坐标
+10、 event.offsetX：相对于容器的水平坐标
+11、 event.offsetY：相对于文档的垂直坐标
+12、 document.documentElement.scrollTop：
 ```
 # 首页基本设参
 ```html
